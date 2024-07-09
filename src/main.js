@@ -1,5 +1,5 @@
 import { k } from "./kaboomCtx";
-import { dialogueData, scaleFactor } from './constants';
+import { dialogueData, scaleFactor, musicTracks } from './constants';
 import { displayDialogue, setCamScale } from "./utils";
 
 // Load sprites
@@ -18,6 +18,11 @@ k.loadSprite("spritesheet", "./spritesheet.png", {
 
 k.loadSprite("map", "./map.png");
 
+// Load music tracks
+musicTracks.forEach((track, index) => {
+  k.loadSound(`music${index + 1}`, `./music/${track}.mp3`);
+});
+
 // Set background color
 k.setBackground(k.Color.fromHex("#005d74"));
 
@@ -33,6 +38,12 @@ k.scene("main", async () => {
         k.pos(0),
         k.scale(scaleFactor)
     ]);
+
+    // Play initial background music
+    let currentMusic = k.play("music1", {
+        loop: true,
+        volume: 0.5,
+    });
 
     // Initialize player but don't add to the scene yet
     const player = k.add([
@@ -68,7 +79,29 @@ k.scene("main", async () => {
                 if (boundary.name) {
                     player.onCollide(boundary.name, () => {
                         player.isInDialogue = true;
-                        displayDialogue(dialogueData[boundary.name], () => player.isInDialogue = false);
+                        if (boundary.name === "coffeeplace") {
+                            displayDialogue(dialogueData.coffeeplace, (selectedOption) => {
+                                player.isInDialogue = false;
+                                if (selectedOption && selectedOption !== "Keep current music") {
+                                    // Stop current music
+                                    currentMusic.stop();
+                                    // Play new music based on selection
+                                    const trackIndex = musicTracks.findIndex(track => 
+                                        track.toLowerCase() === selectedOption.toLowerCase().replace(/\s+/g, '')
+                                    );
+                                    if (trackIndex !== -1) {
+                                        currentMusic = k.play(`music${trackIndex + 1}`, {
+                                            loop: true,
+                                            volume: 0.5,
+                                        });
+                                    }
+                                }
+                            });
+                        } else {
+                            displayDialogue(dialogueData[boundary.name], () => {
+                                player.isInDialogue = false;
+                            });
+                        }
                     });
                 }
             }
@@ -208,5 +241,6 @@ k.scene("main", async () => {
         }
       });
     });
+
 // Start the main scene
 k.go("main");
