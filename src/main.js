@@ -1,7 +1,6 @@
 import { k } from "./kaboomCtx";
 import { dialogueData, scaleFactor, musicTracks } from './constants';
 import { displayDialogue, setCamScale } from "./utils";
-
 // Load sprites
 k.loadSprite("spritesheet", "./spritesheet.png", {
   sliceX: 39,
@@ -20,7 +19,7 @@ k.loadSprite("map", "./map.png");
 
 // Load music tracks
 musicTracks.forEach((track, index) => {
-  k.loadSound(`music${index + 1}`, `./music/${track}.mp3`);
+  k.loadSound(`music${index + 1}`, `./public/${track}.mp3`);
 });
 
 // Set background color
