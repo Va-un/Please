@@ -7,7 +7,8 @@ export const dialogueData = {
             "Keep current music",
             "Hearthome",
             "PokeCenter",
-            "SandGem"
+            "SandGem",
+            "Pause"
         ]
     },
     map: {
@@ -151,5 +152,6 @@ export const dialogueData = {
 export const musicTracks = [
     "Hearthome",
     "PokeCenter",
-    "SandGem"
+    "SandGem",
+    
 ];
