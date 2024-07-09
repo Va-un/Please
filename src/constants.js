@@ -117,8 +117,6 @@ export const dialogueData = {
             }
         ]
     },
-    docs: ``,
-    picture: ``,
     globus: {
         initial: "Time for a globe quiz! Are you ready to spin the globe?",
         questions: [
