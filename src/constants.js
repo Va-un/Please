@@ -5,9 +5,9 @@ export const dialogueData = {
         initial: "Welcome to the Coffee Place! Would you like to change the music?",
         options: [
             "Keep current music",
-            "Jazzy Cafe Vibes",
-            "Acoustic Guitar Melodies",
-            "Soft Piano Tunes"
+            "Hearthome",
+            "PokeCenter",
+            "SandGem"
         ]
     },
     map: {
@@ -55,8 +55,7 @@ export const dialogueData = {
     bookshelf: `I love reading books! one of the most sold storybook ever is "Harry Potter" by J.K.Rowling! The first book in the Harry Potter series has sold over 120 million copies, still not better than the cooking books`,
 
 
-    coffeeplace: `Did you know? Up to 400 milligrams of caffeine per day is safe for most adults. That's roughly the amount of caffeine in 4 cups of brewed coffee, 10 cans of Coca cola or two "energy shot" drinks.`,
-
+   
 
     plant5: `Oh look! a Venus flytrap, generally people know only 2-3 carnivorous plants but here are around 700 species of bug eating plants!, this plant keeps my house table bug free!`,
 
@@ -152,7 +151,7 @@ export const dialogueData = {
     },
 };
 export const musicTracks = [
-    "jazzycafevibes",
-    "acousticguitarmelodies",
-    "softpianotunes"
+    "Hearthome",
+    "PokeCenter",
+    "SandGem"
 ];
